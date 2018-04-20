@@ -105,7 +105,7 @@ public class WebServiceFusap {
     private void mapearJsonArrayALaLista(JSONArray json) throws JSONException {
         NoticiaVO noticia=null;
 
-        for(int i=1;i<json.length();i++){
+        for(int i=0;i<json.length();i++){
             noticia = new NoticiaVO();
             JSONObject jsonObject = null;
             jsonObject= json.getJSONObject(i);

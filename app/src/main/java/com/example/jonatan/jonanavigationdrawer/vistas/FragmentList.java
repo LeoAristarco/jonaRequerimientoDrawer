@@ -87,10 +87,11 @@ public class FragmentList extends Fragment implements WebServiceFusap.FragmentCa
 
         recyclerNumeros.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        webServiceFusap.getNoticias(getContext());
-
         adapterNoticias = new AdapterNoticia();
+
         recyclerNumeros.setAdapter(adapterNoticias);
+
+        webServiceFusap.getNoticias(getContext());
 
         adapterNoticias.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,6 +101,7 @@ public class FragmentList extends Fragment implements WebServiceFusap.FragmentCa
 
             }
         });
+
 
         return vista;
 
