@@ -1,4 +1,4 @@
-#Fri Apr 20 15:53:45 ART 2018
+#Fri Apr 20 16:15:39 ART 2018
 base.0=/home/jonatan/AndroidStudioProjects/JonaNavigationDrawer/app/build/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex

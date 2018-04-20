@@ -69,29 +69,34 @@ public class ContenedorFragment extends Fragment {
         if (Utilidades.rotacion == 0) {
             View parent = (View) container.getParent();
 
-            if (appBar == null) {
-                appBar = (AppBarLayout) parent.findViewById(R.id.appBar);
-                pestanas = new TabLayout(getActivity());
-                appBar.addView(pestanas);
+            setearViewPager(parent);
 
-                viewPager = (ViewPager) vista.findViewById(R.id.idViewPagerInformacion);
-
-                llenarViewPager(viewPager);
-                viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-                    @Override
-                    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                        super.onPageScrolled(position, positionOffset, positionOffsetPixels);
-                    }
-                });
-                pestanas.setupWithViewPager(viewPager);
-            }
-            pestanas.setTabGravity(TabLayout.GRAVITY_FILL);
         } else {
             Utilidades.rotacion = 1;
         }
 
 
         return vista;
+    }
+
+    private void setearViewPager(View parent) {
+        if (appBar == null) {
+            appBar = (AppBarLayout) parent.findViewById(R.id.appBar);
+            pestanas = new TabLayout(getActivity());
+            appBar.addView(pestanas);
+
+            viewPager = (ViewPager) vista.findViewById(R.id.idViewPagerInformacion);
+
+            llenarViewPager(viewPager);
+            viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                    super.onPageScrolled(position, positionOffset, positionOffsetPixels);
+                }
+            });
+            pestanas.setupWithViewPager(viewPager);
+        }
+        pestanas.setTabGravity(TabLayout.GRAVITY_FILL);
     }
 
 
@@ -112,7 +117,8 @@ public class ContenedorFragment extends Fragment {
         }
         Toast.makeText(getContext(), "onDestroyView De Contenedor Fragment", Toast.LENGTH_LONG).show();
 
-        adapterSecciones.limpiarFragment();
+/*        adapterSecciones.limpiarFragment();*/
+        viewPager.removeAllViews();
     }
 
     // TODO: Rename method, update argument and hook method into UI event
