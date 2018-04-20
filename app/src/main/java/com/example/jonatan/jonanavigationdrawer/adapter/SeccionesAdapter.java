@@ -27,6 +27,12 @@ public class SeccionesAdapter extends FragmentStatePagerAdapter {
         listaTitulos.clear();
     }
 
+    public void limpiarFragment(){
+        for (Fragment fragments : listaFragments) {
+            fragments.onDestroyView();
+        }
+    }
+
     @Override
     public CharSequence getPageTitle(int position) {
         return listaTitulos.get(position);

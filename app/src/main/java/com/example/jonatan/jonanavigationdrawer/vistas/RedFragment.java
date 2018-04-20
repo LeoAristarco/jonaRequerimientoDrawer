@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.jonatan.jonanavigationdrawer.R;
 
@@ -74,6 +75,12 @@ public class RedFragment extends Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Toast.makeText(getContext(), "onDestroyView RedFragment", Toast.LENGTH_LONG).show();
     }
 
     @Override

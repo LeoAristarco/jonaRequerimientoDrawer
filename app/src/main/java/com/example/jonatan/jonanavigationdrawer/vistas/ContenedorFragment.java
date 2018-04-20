@@ -10,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.jonatan.jonanavigationdrawer.R;
 import com.example.jonatan.jonanavigationdrawer.Utilidades;
@@ -30,6 +31,7 @@ public class ContenedorFragment extends Fragment {
     private AppBarLayout appBar;
     private TabLayout pestanas;
     private ViewPager viewPager;
+    private SeccionesAdapter adapterSecciones;
 
     private OnFragmentInteractionListener mListener;
 
@@ -94,11 +96,11 @@ public class ContenedorFragment extends Fragment {
 
 
     private void llenarViewPager(ViewPager viewPager) {
-        SeccionesAdapter adapter=new SeccionesAdapter(getFragmentManager());
-        adapter.addFragment(new FragmentList(),"Fragment Noticia");
-        adapter.addFragment(new GreenFragment(),"Fragment Verde");
+        adapterSecciones =new SeccionesAdapter(getFragmentManager());
+        adapterSecciones.addFragment(new FragmentList(),"Fragment Noticia");
+        adapterSecciones.addFragment(new GreenFragment(),"Fragment Verde");
 
-        viewPager.setAdapter(adapter);
+        viewPager.setAdapter(adapterSecciones);
     }
 
 
@@ -108,6 +110,9 @@ public class ContenedorFragment extends Fragment {
         if (Utilidades.rotacion == 0) {
             appBar.removeView(pestanas);
         }
+        Toast.makeText(getContext(), "onDestroyView De Contenedor Fragment", Toast.LENGTH_LONG).show();
+
+        adapterSecciones.limpiarFragment();
     }
 
     // TODO: Rename method, update argument and hook method into UI event

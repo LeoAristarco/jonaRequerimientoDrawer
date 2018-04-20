@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.jonatan.jonanavigationdrawer.adapter.AdapterNoticia;
 import com.example.jonatan.jonanavigationdrawer.IComunicaFragments;
@@ -85,6 +86,8 @@ public class FragmentList extends Fragment implements WebServiceFusap.FragmentCa
         View vista = inflater.inflate(R.layout.fragment_list, container, false);
         recyclerNumeros = (RecyclerView) vista.findViewById(R.id.idRecycler);
 
+        Toast.makeText(getContext(), "onCreateView ListFragment", Toast.LENGTH_LONG).show();
+
         recyclerNumeros.setLayoutManager(new LinearLayoutManager(getContext()));
 
         adapterNoticias = new AdapterNoticia();
@@ -133,10 +136,18 @@ public class FragmentList extends Fragment implements WebServiceFusap.FragmentCa
     }
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Toast.makeText(getContext(), "onDestroyView LIstFragment", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
+        Toast.makeText(getContext(), "onDestroyView LIstFragment", Toast.LENGTH_LONG).show();
     }
+
 
     @Override
     public void onResultsReady(ArrayList<NoticiaVO> noticias) {
