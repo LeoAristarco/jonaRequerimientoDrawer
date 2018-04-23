@@ -118,7 +118,6 @@ public class ContenedorFragment extends Fragment {
         Toast.makeText(getContext(), "onDestroyView De Contenedor Fragment", Toast.LENGTH_LONG).show();
 
 /*        adapterSecciones.limpiarFragment();*/
-        viewPager.removeAllViews();
     }
 
     // TODO: Rename method, update argument and hook method into UI event
